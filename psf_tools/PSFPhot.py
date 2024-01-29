@@ -577,7 +577,11 @@ def run_hst1pass(input_images, hmin=5, fmin=1000, pmax=99999,
         validate_file(upper_dict['GDC'])
     else:
         gdc = upper_dict['GDC']
-        shutil.copy(gdc, '.')
+        try:
+            shutil.copy(gdc, '.')
+        except shutil.SameFileError:
+            pass
+        #shutil.copy(gdc, '.')
         upper_dict['GDC'] = os.path.split(gdc)[-1]
         validate_file(upper_dict['GDC'])
 
