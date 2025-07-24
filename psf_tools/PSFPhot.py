@@ -775,7 +775,7 @@ def validate_file(input_file):
         Filename of fits file to validate
     """
     try:
-        hdu = fits.open(input_file, ignore_missing_end=True)
+        hdu = fits.open(input_file, ignore_missing_simple=True)
         hdu.close()
     except IOError:
         raise IOError('Could not read input file {}, ensure it exists \
